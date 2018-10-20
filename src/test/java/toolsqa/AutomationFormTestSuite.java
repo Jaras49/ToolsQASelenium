@@ -1,8 +1,11 @@
+package toolsqa;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 import table.TableRow;
+import toolsqa.AbstractTest;
 
 import java.util.Arrays;
 import java.util.Comparator;
