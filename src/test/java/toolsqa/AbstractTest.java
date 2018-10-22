@@ -16,6 +16,7 @@ public abstract class AbstractTest {
         String driverPath = this.getClass().getClassLoader().getResource(CHROME_DRIVER_NAME).getPath();
         System.setProperty("webdriver.chrome.driver", driverPath);
         driver = new ChromeDriver();
+        driver.manage().window().maximize();
     }
 
     @AfterMethod
