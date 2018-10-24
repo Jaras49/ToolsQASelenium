@@ -111,7 +111,7 @@ public class AutomationFormPage extends AbstractPage {
 
     public int getSelectedExperienceRadioButtonValue() {
         return experienceRadioButtons.stream()
-                .filter(button -> button.isSelected())
+                .filter(WebElement::isSelected)
                 .mapToInt(button -> Integer.valueOf(button.getAttribute(VALUE_ATTR)))
                 .findAny()
                 .orElse(0);
@@ -194,7 +194,7 @@ public class AutomationFormPage extends AbstractPage {
         Select select = new Select(seleniumCommandsSelect);
 
         return select.getAllSelectedOptions().stream()
-                .map(option -> option.getText())
+                .map(WebElement::getText)
                 .collect(Collectors.toList());
     }
 
