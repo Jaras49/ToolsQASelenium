@@ -1,10 +1,10 @@
-package toolsqa.alert;
+package com.toolsqa.alert;
 
 import com.toolsqa.factory.PageObjectFactory;
 import com.toolsqa.page.alert.AlertPage;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import toolsqa.AbstractTest;
+import com.toolsqa.AbstractTest;
 
 import static org.testng.Assert.assertEquals;
 

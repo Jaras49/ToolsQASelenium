@@ -1,10 +1,10 @@
-package toolsqa.form;
+package com.toolsqa.form;
 
 import com.toolsqa.factory.PageObjectFactory;
 import com.toolsqa.page.form.AutomationFormPage;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import toolsqa.AbstractTest;
+import com.toolsqa.AbstractTest;
 
 import java.util.Arrays;
 
