@@ -1,5 +1,6 @@
 package com.toolsqa.page;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -26,5 +27,13 @@ public abstract class AbstractPage {
 
     protected List<WebElement> waitUntilVisible(List<WebElement> webElements) {
         return wait.until(ExpectedConditions.visibilityOfAllElements(webElements));
+    }
+
+    protected WebElement waitUntilVisible(WebElement webElement) {
+        return wait.until(ExpectedConditions.visibilityOf(webElement));
+    }
+
+    protected Alert waitUntilAlertPresent() {
+        return wait.until(ExpectedConditions.alertIsPresent());
     }
 }
