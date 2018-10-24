@@ -1,9 +1,7 @@
 package toolsqa.form;
 
+import com.toolsqa.factory.PageObjectFactory;
 import com.toolsqa.page.form.AutomationFormPage;
-import com.toolsqa.page.menu.MenuPage;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import toolsqa.AbstractTest;
@@ -24,14 +22,12 @@ public class FormTest extends AbstractTest {
     @BeforeMethod
     public void setUp() {
         super.setUp();
-        automationFormPage =
-                new AutomationFormPage(driver, new WebDriverWait(driver, 10), new Actions(driver),
-                        new MenuPage(driver, new WebDriverWait(driver, 10), new Actions(driver)));
+        automationFormPage = PageObjectFactory.createAutomationFormPage(driver);
+        openForm();
     }
 
     @Test
     public void formTest() {
-        openForm();
         fillForm();
         assertFormData();
         automationFormPage.clickSubmitButton();
