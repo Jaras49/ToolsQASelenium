@@ -8,20 +8,21 @@ import org.testng.annotations.BeforeMethod;
 public abstract class AbstractTest {
 
     private static final String CHROME_DRIVER_NAME = "chromedriver.exe";
+    private static final String TOOLS_QA_URL = "http://toolsqa.com/";
+
     protected WebDriver driver;
 
     @BeforeMethod
     public void setUp() {
-
         String driverPath = this.getClass().getClassLoader().getResource(CHROME_DRIVER_NAME).getPath();
         System.setProperty("webdriver.chrome.driver", driverPath);
         driver = new ChromeDriver();
         driver.manage().window().maximize();
+        driver.get(TOOLS_QA_URL);
     }
 
     @AfterMethod
-    public void tearDown() throws InterruptedException {
-        Thread.sleep(2000);
+    public void tearDown() {
         driver.quit();
     }
 }
