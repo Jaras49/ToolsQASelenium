@@ -19,6 +19,9 @@ public class MenuPage extends AbstractPage {
     @FindBy(xpath = "//*[@id='primary-menu']//*[contains(text(), 'Automation Practice Form')]")
     private WebElement automationPracticeForm;
 
+    @FindBy(xpath = "//*[@id='primary-menu']//*[contains(text(), 'Alerts')]")
+    private WebElement alertTestPage;
+
     public MenuPage(WebDriver driver, WebDriverWait wait, Actions actions) {
         super(driver, wait, actions);
         PageFactory.initElements(driver, this);
@@ -30,5 +33,9 @@ public class MenuPage extends AbstractPage {
 
     public void goToAutomationFormPage() {
         waitUntilClickable(automationPracticeForm).click();
+    }
+
+    public void goToAlertTestPage() {
+        waitUntilClickable(alertTestPage).click();
     }
 }
