@@ -28,6 +28,9 @@ public class MenuPage extends AbstractPage {
     @FindBy(xpath = "//*[@id='primary-menu']//*[contains(text(), 'Automation Practice Switch Windows')]")
     private WebElement automationPracticeSwitchWindows;
 
+    @FindBy(xpath = "//*[@id='primary-menu']//*[contains(text(), 'IFrame practice page')]")
+    private WebElement iFramePracticePage;
+
     public MenuPage(WebDriver driver, WebDriverWait wait, Actions actions) {
         super(driver, wait, actions);
         PageFactory.initElements(driver, this);
@@ -51,5 +54,9 @@ public class MenuPage extends AbstractPage {
 
     public void goToAutomationPracticeSwitchWindows() {
         waitUntilClickable(automationPracticeSwitchWindows).click();
+    }
+
+    public void goToIframePracticePage() {
+        waitUntilClickable(iFramePracticePage).click();
     }
 }

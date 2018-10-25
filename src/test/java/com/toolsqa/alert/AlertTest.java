@@ -10,8 +10,6 @@ import static org.testng.Assert.assertEquals;
 
 public class AlertTest extends AbstractTest {
 
-    private static final String ALERT_URL = "http://toolsqa.com/handling-alerts-using-selenium-webdriver/";
-
     private AlertPage alertPage;
 
     @Override
