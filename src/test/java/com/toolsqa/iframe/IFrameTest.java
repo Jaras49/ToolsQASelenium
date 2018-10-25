@@ -1,4 +1,4 @@
-package com.toolsqa.tab.iframe.test;
+package com.toolsqa.iframe;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
