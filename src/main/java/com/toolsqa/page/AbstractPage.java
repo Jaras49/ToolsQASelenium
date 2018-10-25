@@ -1,12 +1,14 @@
 package com.toolsqa.page;
 
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class AbstractPage {
@@ -35,5 +37,11 @@ public abstract class AbstractPage {
 
     protected Alert waitUntilAlertPresent() {
         return wait.until(ExpectedConditions.alertIsPresent());
+    }
+
+    public void switchToNewWindow(int index) {
+        ArrayList<String> windowHandles = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(windowHandles.get(index));
+        driver.manage().window().maximize();
     }
 }

@@ -42,7 +42,7 @@ public class AlertTest extends AbstractTest {
     }
 
     private void openAlertPage() {
-        alertPage.getMenu().moveToDemoSites();
+        alertPage.getMenu().hoverOverDemoSites();
         alertPage.getMenu().goToAlertTestPage();
     }
 }

@@ -35,7 +35,7 @@ public class FormTest extends AbstractTest {
     }
 
     private void openForm() {
-        automationFormPage.getMenu().moveToDemoSites();
+        automationFormPage.getMenu().hoverOverDemoSites();
         automationFormPage.getMenu().goToAutomationFormPage();
     }
 

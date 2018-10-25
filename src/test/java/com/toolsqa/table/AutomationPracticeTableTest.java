@@ -54,7 +54,7 @@ public class AutomationPracticeTableTest extends AbstractTest {
     }
 
     private void openAutomationPracticeTablePage() {
-        automationPracticeTablePage.getMenu().moveToDemoSites();
+        automationPracticeTablePage.getMenu().hoverOverDemoSites();
         automationPracticeTablePage.getMenu().goToAutomationPracticeTablePage();
     }
 }

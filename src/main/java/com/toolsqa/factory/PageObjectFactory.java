@@ -4,6 +4,7 @@ import com.toolsqa.page.alert.AlertPage;
 import com.toolsqa.page.form.AutomationFormPage;
 import com.toolsqa.page.menu.MenuPage;
 import com.toolsqa.page.table.AutomationPracticeTablePage;
+import com.toolsqa.page.windows.AutomationPracticeSwitchWindowsPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -24,6 +25,11 @@ public class PageObjectFactory {
 
     public static AutomationPracticeTablePage createAutomationPracticeTable(WebDriver driver) {
         return new AutomationPracticeTablePage
+                (driver, new WebDriverWait(driver, WAIT_SECONDS), new Actions(driver), createMenuPage(driver));
+    }
+
+    public static AutomationPracticeSwitchWindowsPage createAutomationSwitchWindowsPage(WebDriver driver) {
+        return new AutomationPracticeSwitchWindowsPage
                 (driver, new WebDriverWait(driver, WAIT_SECONDS), new Actions(driver), createMenuPage(driver));
     }
 
