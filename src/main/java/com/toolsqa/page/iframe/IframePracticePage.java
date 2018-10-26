@@ -15,22 +15,22 @@ public class IframePracticePage extends AbstractPage {
     private MenuPage menu;
 
     @FindBy(css = "#IF1")
-    private WebElement iFrame1;
+    private WebElement formFrame;
 
     @FindBy(css = "input[name='firstname']")
-    private WebElement iFrame1InputField;
+    private WebElement formFrameInputFirld;
 
     @FindBy(css = "#submit")
-    private WebElement iFrame1SubmitButton;
+    private WebElement formFrameSubmitButton;
 
     @FindBy(css = "#IF2")
-    private WebElement iFrame2;
+    private WebElement blogFrame;
 
     @FindBy(css = "a.btn-primary")
-    private WebElement iFrame2SubmitButton;
+    private WebElement blogFrameSubmitButton;
 
     @FindBy(css = "#comments")
-    private WebElement iFrame2HiddenDiv;
+    private WebElement blogFrameHiddenCommentsDiv;
 
     public IframePracticePage(WebDriver driver, WebDriverWait wait, Actions actions, MenuPage menu) {
         super(driver, wait, actions);
@@ -42,35 +42,35 @@ public class IframePracticePage extends AbstractPage {
         return menu;
     }
 
-    public void switchToIframe1() {
-        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(iFrame1));
+    public void switchToFormFrame() {
+        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(formFrame));
     }
 
-    public void setIframe1Input(String input) {
-        waitUntilVisible(iFrame1InputField).sendKeys(input);
+    public void setFormFrameInput(String input) {
+        waitUntilVisible(formFrameInputFirld).sendKeys(input);
     }
 
-    public String getIframe1InputText() {
-        return waitUntilVisible(iFrame1InputField).getAttribute("value");
+    public String getFormFrameInputText() {
+        return waitUntilVisible(formFrameInputFirld).getAttribute("value");
     }
 
-    public void clickIframe1SubmitButton() {
-        waitUntilClickable(iFrame1SubmitButton).click();
+    public void clickFormFrameSubmitButton() {
+        waitUntilClickable(formFrameSubmitButton).click();
     }
 
-    public void switchToIframe2() {
-        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(iFrame2));
+    public void switchToBlogFrame() {
+        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(blogFrame));
     }
 
-    public void clickIframe2SubmitButton() {
-        waitUntilClickable(iFrame2SubmitButton).click();
+    public void clickBlogFrameSubmitButton() {
+        waitUntilClickable(blogFrameSubmitButton).click();
     }
 
     public void switchToParentFrame() {
         driver.switchTo().parentFrame();
     }
 
-    public void isVisible() {
-        waitUntilVisible(iFrame2HiddenDiv);
+    public void isCommentsDivVisible() {
+        waitUntilVisible(blogFrameHiddenCommentsDiv);
     }
 }

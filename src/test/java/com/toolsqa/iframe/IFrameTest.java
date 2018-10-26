@@ -22,17 +22,17 @@ public class IFrameTest extends AbstractTest {
 
     @Test
     public void test() {
-        iframePracticePage.switchToIframe1();
-        iframePracticePage.setIframe1Input("test");
-        assertEquals(iframePracticePage.getIframe1InputText(), "test");
-        iframePracticePage.clickIframe1SubmitButton();
-        assertEquals(iframePracticePage.getIframe1InputText(), "");
+        iframePracticePage.switchToFormFrame();
+        iframePracticePage.setFormFrameInput("test");
+        assertEquals(iframePracticePage.getFormFrameInputText(), "test");
+        iframePracticePage.clickFormFrameSubmitButton();
+        assertEquals(iframePracticePage.getFormFrameInputText(), "");
 
         iframePracticePage.switchToParentFrame();
 
-        iframePracticePage.switchToIframe2();
-        iframePracticePage.clickIframe2SubmitButton();
-        iframePracticePage.isVisible();
+        iframePracticePage.switchToBlogFrame();
+        iframePracticePage.clickBlogFrameSubmitButton();
+        iframePracticePage.isCommentsDivVisible();
     }
 
     private void openIFramePracticePage() {
