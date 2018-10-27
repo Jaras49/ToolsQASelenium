@@ -1,5 +1,7 @@
 package com.toolsqa;
 
+import com.toolsqa.factory.PageObjectFactory;
+import com.toolsqa.page.menu.MenuPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -13,6 +15,7 @@ public abstract class AbstractTest {
     private static final String TOOLS_QA_URL = "http://toolsqa.com/";
 
     protected WebDriver driver;
+    protected MenuPage menuPage;
 
     @BeforeMethod
     public void setUp() {
@@ -22,6 +25,7 @@ public abstract class AbstractTest {
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
         driver.get(TOOLS_QA_URL);
+        menuPage = PageObjectFactory.createMenuPage(driver);
     }
 
     @AfterMethod

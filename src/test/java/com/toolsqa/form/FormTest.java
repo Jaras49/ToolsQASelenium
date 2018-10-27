@@ -1,6 +1,5 @@
 package com.toolsqa.form;
 
-import com.toolsqa.factory.PageObjectFactory;
 import com.toolsqa.page.form.AutomationFormPage;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -22,8 +21,7 @@ public class FormTest extends AbstractTest {
     @BeforeMethod
     public void setUp() {
         super.setUp();
-        automationFormPage = PageObjectFactory.createAutomationFormPage(driver);
-        openForm();
+        automationFormPage = openForm();
     }
 
     @Test
@@ -34,55 +32,39 @@ public class FormTest extends AbstractTest {
         assertTrue(automationFormPage.getFirstNameInput().isEmpty());
     }
 
-    private void openForm() {
-        automationFormPage.getMenu().hoverOverDemoSites();
-        automationFormPage.getMenu().goToAutomationFormPage();
+    private AutomationFormPage openForm() {
+        return menuPage.hoverOverDemoSites()
+                .goToAutomationFormPage();
     }
 
     private void fillForm() {
-        automationFormPage.setFirstNameInput("Jarosław");
-        automationFormPage.setLastNameInput("Nowak");
-
-        automationFormPage.clickFemaleSexRadioButton();
-
-        automationFormPage.clickExperienceRadioButton(1);
-
-        automationFormPage.setDateInput("1.08.1889");
-
-        automationFormPage.clickAutomationTesterProffesionCheckBox();
-
         String dummyPhotoPath = this.getClass().getClassLoader().getResource(DUMMY_PHOTO_NAME).getPath().replaceFirst("/", "");
-        automationFormPage.setPhotoInput(dummyPhotoPath);
-
-        automationFormPage.clickSeleniumWebDriverAutomationToolCheckBox();
-
-        automationFormPage.selectContinentByIndex(1);
-
-        automationFormPage.selectSeleniumCommandsByIndex(0, 3);
+        automationFormPage.setFirstNameInput("Jarosław")
+                .setLastNameInput("Nowak")
+                .clickFemaleSexRadioButton()
+                .clickExperienceRadioButton(1)
+                .setDateInput("1.08.1889")
+                .clickAutomationTesterProffesionCheckBox()
+                .setPhotoInput(dummyPhotoPath)
+                .clickSeleniumWebDriverAutomationToolCheckBox()
+                .selectContinentByIndex(1)
+                .selectSeleniumCommandsByIndex(0, 3);
     }
 
     private void assertFormData() {
         assertEquals(automationFormPage.getFirstNameInput(), "Jarosław");
         assertEquals(automationFormPage.getLastNameInput(), "Nowak");
-
         assertTrue(automationFormPage.isFemaleSexRadioButtonSelected());
         assertFalse(automationFormPage.isMaleSexRadioButtonSelected());
-
         assertEquals(automationFormPage.getSelectedExperienceRadioButtonValue(), 1);
-
         assertEquals(automationFormPage.getDateInput(), "1.08.1889");
-
         assertTrue(automationFormPage.isAutomationTesterProffesionCheckBoxSelected());
         assertFalse(automationFormPage.isManualTesterProffesionCheckBoxSelected());
-
         assertEquals(automationFormPage.getPhotoName(), "dummyPhoto.jpg");
-
         assertTrue(automationFormPage.isSeleniumWebDriverAutomationToolCheckBoxSelected());
         assertFalse(automationFormPage.isQptAutomationToolCheckBoxSelected());
         assertFalse(automationFormPage.isSeleniumIdeAutomationToolCheckBoxSelected());
-
         assertEquals(automationFormPage.getSelectedContinentName(), "Europe");
-
         assertEquals(automationFormPage.getSelectedSeleniumCommands(), Arrays.asList("Browser Commands", "Wait Commands"));
     }
 }

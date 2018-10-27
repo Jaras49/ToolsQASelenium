@@ -1,6 +1,5 @@
 package com.toolsqa.windows;
 
-import com.toolsqa.factory.PageObjectFactory;
 import com.toolsqa.page.windows.AutomationPracticeSwitchWindowsPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -19,8 +18,7 @@ public class TabTest extends AbstractTest {
     @BeforeMethod
     public void setUp() {
         super.setUp();
-        automationPracticeSwitchWindowsPage = PageObjectFactory.createAutomationSwitchWindowsPage(driver);
-        openAutomationPracticeSwitchWindowsPage();
+        automationPracticeSwitchWindowsPage = openAutomationPracticeSwitchWindowsPage();
     }
 
     @Test
@@ -37,8 +35,8 @@ public class TabTest extends AbstractTest {
 
     @Test
     public void switchMessageWindowTest() {
-        automationPracticeSwitchWindowsPage.clickNewMessageWindowButton();
-        automationPracticeSwitchWindowsPage.switchToNewWindow(1);
+        automationPracticeSwitchWindowsPage.clickNewMessageWindowButton()
+                .switchToNewWindow(1);
 
         String text = new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.tagName("body"))).getText();
         assertEquals(text, "Knowledge increases by sharing but not by saving. Please share this website with your friends and in your organization.");
@@ -50,8 +48,9 @@ public class TabTest extends AbstractTest {
         automationPracticeSwitchWindowsPage.switchToNewWindow(1);
 
         String url = driver.getCurrentUrl();
-        automationPracticeSwitchWindowsPage.getMenu().hoverOverDemoSites();
-        automationPracticeSwitchWindowsPage.getMenu().goToAutomationPracticeTablePage();
+        automationPracticeSwitchWindowsPage.getMenu()
+                .hoverOverDemoSites()
+                .goToAutomationPracticeTablePage();
         new WebDriverWait(driver, 15).until(ExpectedConditions.not(ExpectedConditions.urlToBe(url)));
         assertEquals(driver.getCurrentUrl(), "http://toolsqa.com/automation-practice-table/");
 
@@ -60,8 +59,8 @@ public class TabTest extends AbstractTest {
         assertEquals(driver.getCurrentUrl(), "http://toolsqa.com/automation-practice-switch-windows/");
     }
 
-    private void openAutomationPracticeSwitchWindowsPage() {
-        automationPracticeSwitchWindowsPage.getMenu().hoverOverDemoSites();
-        automationPracticeSwitchWindowsPage.getMenu().goToAutomationPracticeSwitchWindows();
+    private AutomationPracticeSwitchWindowsPage openAutomationPracticeSwitchWindowsPage() {
+        return menuPage.hoverOverDemoSites()
+                .goToAutomationPracticeSwitchWindows();
     }
 }

@@ -28,16 +28,19 @@ public class AutomationPracticeSwitchWindowsPage extends AbstractPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void clickNewBrowserWindowButton() {
+    public AutomationPracticeSwitchWindowsPage clickNewBrowserWindowButton() {
         waitUntilClickable(newBrowserWindowButton).click();
+        return this;
     }
 
-    public void clickNewMessageWindowButton() {
+    public AutomationPracticeSwitchWindowsPage clickNewMessageWindowButton() {
         waitUntilClickable(newMessageWindowButton).click();
+        return this;
     }
 
-    public void clickNewBrowserTabButton() {
+    public AutomationPracticeSwitchWindowsPage clickNewBrowserTabButton() {
         waitUntilClickable(newBrowserTabButton).click();
+        return this;
     }
 
     public MenuPage getMenu() {

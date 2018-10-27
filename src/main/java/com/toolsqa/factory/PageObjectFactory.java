@@ -42,7 +42,7 @@ public class PageObjectFactory {
                 (driver, new WebDriverWait(driver, WAIT_SECONDS), new Actions(driver), createMenuPage(driver));
     }
 
-    private static MenuPage createMenuPage(WebDriver driver) {
+    public static MenuPage createMenuPage(WebDriver driver) {
         return new MenuPage
                 (driver, new WebDriverWait(driver, WAIT_SECONDS), new Actions(driver));
     }

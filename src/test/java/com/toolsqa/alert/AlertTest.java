@@ -1,6 +1,5 @@
 package com.toolsqa.alert;
 
-import com.toolsqa.factory.PageObjectFactory;
 import com.toolsqa.page.alert.AlertPage;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -16,31 +15,29 @@ public class AlertTest extends AbstractTest {
     @BeforeMethod
     public void setUp() {
         super.setUp();
-        alertPage = PageObjectFactory.createAlertPage(driver);
-        openAlertPage();
+        alertPage = openAlertPage();
     }
 
     @Test
     public void test() {
-        alertPage.clickSimpleAlertButton();
-        alertPage.confirmAlert();
-
-        alertPage.clickConfirmAlertButton();
-        alertPage.confirmAlert();
+        alertPage.clickSimpleAlertButton()
+                .confirmAlert()
+                .clickConfirmAlertButton()
+                .confirmAlert();
         assertEquals(alertPage.getConfirmAlertText(), "You have clicked on OK");
 
-        alertPage.clickConfirmAlertButton();
-        alertPage.dismissAlert();
+        alertPage.clickConfirmAlertButton()
+                .dismissAlert();
         assertEquals(alertPage.getConfirmAlertText(), "You have clicked on Cancel");
 
         alertPage.clickPromptAlertButton();
         assertEquals(alertPage.getAlertText(), "Do you like toolsqa?");
-        alertPage.setAlertInput("No");
-        alertPage.confirmAlert();
+        alertPage.setAlertInput("No")
+                .confirmAlert();
     }
 
-    private void openAlertPage() {
-        alertPage.getMenu().hoverOverDemoSites();
-        alertPage.getMenu().goToAlertTestPage();
+    private AlertPage openAlertPage() {
+        return menuPage.hoverOverDemoSites()
+                .goToAlertTestPage();
     }
 }

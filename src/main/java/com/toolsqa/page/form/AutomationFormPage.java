@@ -70,43 +70,48 @@ public class AutomationFormPage extends AbstractPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void setFirstNameInput(String firstname) {
+    public AutomationFormPage setFirstNameInput(String firstname) {
         waitUntilClickable(firstNameInput).sendKeys(firstname);
+        return this;
     }
 
     public String getFirstNameInput() {
         return firstNameInput.getAttribute(VALUE_ATTR);
     }
 
-    public void setLastNameInput(String lastname) {
+    public AutomationFormPage setLastNameInput(String lastname) {
         waitUntilClickable(lastNameInput).sendKeys(lastname);
+        return this;
     }
 
     public String getLastNameInput() {
         return lastNameInput.getAttribute(VALUE_ATTR);
     }
 
-    public void clickMaleSexRadioButton() {
+    public AutomationFormPage clickMaleSexRadioButton() {
         waitUntilClickable(maleSexRadioButton).click();
+        return this;
     }
 
     public boolean isMaleSexRadioButtonSelected() {
         return maleSexRadioButton.isSelected();
     }
 
-    public void clickFemaleSexRadioButton() {
+    public AutomationFormPage clickFemaleSexRadioButton() {
         waitUntilClickable(femaleSexRadioButton).click();
+        return this;
     }
 
     public boolean isFemaleSexRadioButtonSelected() {
         return femaleSexRadioButton.isSelected();
     }
 
-    public void clickExperienceRadioButton(int value) {
+    public AutomationFormPage clickExperienceRadioButton(int value) {
         waitUntilVisible(experienceRadioButtons).stream()
                 .filter(button -> button.getAttribute(VALUE_ATTR).equals(String.valueOf(value)))
                 .findAny()
                 .ifPresent(WebElement::click);
+        return this;
     }
 
     public int getSelectedExperienceRadioButtonValue() {
@@ -117,77 +122,87 @@ public class AutomationFormPage extends AbstractPage {
                 .orElse(0);
     }
 
-    public void setDateInput(String date) {
+    public AutomationFormPage setDateInput(String date) {
         waitUntilClickable(dateInput).sendKeys(date);
+        return this;
     }
 
     public String getDateInput() {
         return dateInput.getAttribute(VALUE_ATTR);
     }
 
-    public void clickManualTesterProffesionCheckBox() {
+    public AutomationFormPage clickManualTesterProffesionCheckBox() {
         waitUntilClickable(manualTesterProffesionCheckBox).click();
+        return this;
     }
 
     public boolean isManualTesterProffesionCheckBoxSelected() {
         return manualTesterProffesionCheckBox.isSelected();
     }
 
-    public void clickAutomationTesterProffesionCheckBox() {
+    public AutomationFormPage clickAutomationTesterProffesionCheckBox() {
         waitUntilClickable(automationTesterProffesionCheckBox).click();
+        return this;
+
     }
 
     public boolean isAutomationTesterProffesionCheckBoxSelected() {
         return automationTesterProffesionCheckBox.isSelected();
     }
 
-    public void setPhotoInput(String photoPath) {
+    public AutomationFormPage setPhotoInput(String photoPath) {
         waitUntilClickable(photoInput).sendKeys(photoPath);
+        return this;
     }
 
     public String getPhotoName() {
         return photoInput.getAttribute(VALUE_ATTR).replaceAll(".*\\\\", "");
     }
 
-    public void clickQtpAutomationToolCheckBox() {
+    public AutomationFormPage clickQtpAutomationToolCheckBox() {
         waitUntilClickable(qtpAutomationToolCheckBox).click();
+        return this;
     }
 
     public boolean isQptAutomationToolCheckBoxSelected() {
         return qtpAutomationToolCheckBox.isSelected();
     }
 
-    public void clickSeleniumIdeAutomationToolCheckBox() {
+    public AutomationFormPage clickSeleniumIdeAutomationToolCheckBox() {
         waitUntilClickable(seleniumIdeAutomationToolCheckBox).click();
+        return this;
     }
 
     public boolean isSeleniumIdeAutomationToolCheckBoxSelected() {
         return seleniumIdeAutomationToolCheckBox.isSelected();
     }
 
-    public void clickSeleniumWebDriverAutomationToolCheckBox() {
+    public AutomationFormPage clickSeleniumWebDriverAutomationToolCheckBox() {
         waitUntilClickable(seleniumWebDriverAutomationToolCheckBox).click();
+        return this;
     }
 
     public boolean isSeleniumWebDriverAutomationToolCheckBoxSelected() {
         return seleniumWebDriverAutomationToolCheckBox.isSelected();
     }
 
-    public void selectContinentByIndex(int index) {
+    public AutomationFormPage selectContinentByIndex(int index) {
         waitUntilClickable(continentsSelect);
         new Select(continentsSelect).selectByIndex(index);
+        return this;
     }
 
     public String getSelectedContinentName() {
         return new Select(continentsSelect).getFirstSelectedOption().getText();
     }
 
-    public void selectSeleniumCommandsByIndex(int... index) {
+    public AutomationFormPage selectSeleniumCommandsByIndex(int... index) {
         waitUntilClickable(seleniumCommandsSelect);
         Select select = new Select(seleniumCommandsSelect);
         for (int i : index) {
             select.selectByIndex(i);
         }
+        return this;
     }
 
     public List<String> getSelectedSeleniumCommands() {
@@ -198,8 +213,9 @@ public class AutomationFormPage extends AbstractPage {
                 .collect(Collectors.toList());
     }
 
-    public void clickSubmitButton() {
+    public AutomationFormPage clickSubmitButton() {
         waitUntilClickable(submitButton).click();
+        return this;
     }
 
     public MenuPage getMenu() {

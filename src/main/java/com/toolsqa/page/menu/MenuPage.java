@@ -1,6 +1,12 @@
 package com.toolsqa.page.menu;
 
+import com.toolsqa.factory.PageObjectFactory;
 import com.toolsqa.page.AbstractPage;
+import com.toolsqa.page.alert.AlertPage;
+import com.toolsqa.page.form.AutomationFormPage;
+import com.toolsqa.page.iframe.IframePracticePage;
+import com.toolsqa.page.table.AutomationPracticeTablePage;
+import com.toolsqa.page.windows.AutomationPracticeSwitchWindowsPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -36,27 +42,33 @@ public class MenuPage extends AbstractPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void hoverOverDemoSites() {
+    public MenuPage hoverOverDemoSites() {
         actions.moveToElement(waitUntilClickable(demoSites)).perform();
+        return this;
     }
 
-    public void goToAutomationFormPage() {
+    public AutomationFormPage goToAutomationFormPage() {
         waitUntilClickable(automationPracticeForm).click();
+        return PageObjectFactory.createAutomationFormPage(driver);
     }
 
-    public void goToAlertTestPage() {
+    public AlertPage goToAlertTestPage() {
         waitUntilClickable(alertTestPage).click();
+        return PageObjectFactory.createAlertPage(driver);
     }
 
-    public void goToAutomationPracticeTablePage() {
+    public AutomationPracticeTablePage goToAutomationPracticeTablePage() {
         waitUntilClickable(automationPracticeTable).click();
+        return PageObjectFactory.createAutomationPracticeTable(driver);
     }
 
-    public void goToAutomationPracticeSwitchWindows() {
+    public AutomationPracticeSwitchWindowsPage goToAutomationPracticeSwitchWindows() {
         waitUntilClickable(automationPracticeSwitchWindows).click();
+        return PageObjectFactory.createAutomationSwitchWindowsPage(driver);
     }
 
-    public void goToIframePracticePage() {
+    public IframePracticePage goToIframePracticePage() {
         waitUntilClickable(iFramePracticePage).click();
+        return PageObjectFactory.createIframePracticePage(driver);
     }
 }

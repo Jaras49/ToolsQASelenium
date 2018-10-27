@@ -32,27 +32,32 @@ public class AlertPage extends AbstractPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void clickSimpleAlertButton() {
-        ((JavascriptExecutor) driver).executeScript("scroll(0, 400);");
+    public AlertPage clickSimpleAlertButton() {
+        scrollPage();
         waitUntilClickable(simpleAlertButton).click();
+        return this;
     }
 
-    public void clickConfirmAlertButton() {
-        ((JavascriptExecutor) driver).executeScript("scroll(0, 400);");
+    public AlertPage clickConfirmAlertButton() {
+        scrollPage();
         waitUntilClickable(confirmAlertButton).click();
+        return this;
     }
 
-    public void clickPromptAlertButton() {
-        ((JavascriptExecutor) driver).executeScript("scroll(0, 400);");
+    public AlertPage clickPromptAlertButton() {
+        scrollPage();
         waitUntilClickable(promtAlerButton).click();
+        return this;
     }
 
-    public void confirmAlert() {
+    public AlertPage confirmAlert() {
         waitUntilAlertPresent().accept();
+        return this;
     }
 
-    public void dismissAlert() {
+    public AlertPage dismissAlert() {
         waitUntilAlertPresent().dismiss();
+        return this;
     }
 
     public String getConfirmAlertText() {
@@ -63,11 +68,16 @@ public class AlertPage extends AbstractPage {
         return waitUntilAlertPresent().getText();
     }
 
-    public void setAlertInput(String input) {
+    public AlertPage setAlertInput(String input) {
         waitUntilAlertPresent().sendKeys(input);
+        return this;
     }
 
     public MenuPage getMenu() {
         return menuPage;
+    }
+
+    private void scrollPage() {
+        ((JavascriptExecutor) driver).executeScript("scroll(0, 400);");
     }
 }

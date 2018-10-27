@@ -1,7 +1,6 @@
 package com.toolsqa.table;
 
 import com.toolsqa.AbstractTest;
-import com.toolsqa.factory.PageObjectFactory;
 import com.toolsqa.model.table.TableRow;
 import com.toolsqa.page.table.AutomationPracticeTablePage;
 import org.testng.annotations.BeforeMethod;
@@ -22,8 +21,7 @@ public class AutomationPracticeTableTest extends AbstractTest {
     @BeforeMethod
     public void setUp() {
         super.setUp();
-        automationPracticeTablePage = PageObjectFactory.createAutomationPracticeTable(driver);
-        openAutomationPracticeTablePage();
+        automationPracticeTablePage = openAutomationPracticeTablePage();
     }
 
     @Test
@@ -53,8 +51,8 @@ public class AutomationPracticeTableTest extends AbstractTest {
                 .forEach(System.out::println);
     }
 
-    private void openAutomationPracticeTablePage() {
-        automationPracticeTablePage.getMenu().hoverOverDemoSites();
-        automationPracticeTablePage.getMenu().goToAutomationPracticeTablePage();
+    private AutomationPracticeTablePage openAutomationPracticeTablePage() {
+        return menuPage.hoverOverDemoSites()
+                .goToAutomationPracticeTablePage();
     }
 }

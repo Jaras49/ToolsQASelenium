@@ -42,35 +42,42 @@ public class IframePracticePage extends AbstractPage {
         return menu;
     }
 
-    public void switchToFormFrame() {
+    public IframePracticePage switchToFormFrame() {
         wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(formFrame));
+        return this;
     }
 
-    public void setFormFrameInput(String input) {
+    public IframePracticePage setFormFrameInput(String input) {
         waitUntilVisible(formFrameInputFirld).sendKeys(input);
+        return this;
     }
 
     public String getFormFrameInputText() {
         return waitUntilVisible(formFrameInputFirld).getAttribute("value");
     }
 
-    public void clickFormFrameSubmitButton() {
+    public IframePracticePage clickFormFrameSubmitButton() {
         waitUntilClickable(formFrameSubmitButton).click();
+        return this;
     }
 
-    public void switchToBlogFrame() {
+    public IframePracticePage switchToBlogFrame() {
         wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(blogFrame));
+        return this;
     }
 
-    public void clickBlogFrameSubmitButton() {
+    public IframePracticePage clickBlogFrameSubmitButton() {
         waitUntilClickable(blogFrameSubmitButton).click();
+        return this;
     }
 
-    public void switchToParentFrame() {
+    public IframePracticePage switchToParentFrame() {
         driver.switchTo().parentFrame();
+        return this;
     }
 
-    public void isCommentsDivVisible() {
+    public IframePracticePage isCommentsDivVisible() {
         waitUntilVisible(blogFrameHiddenCommentsDiv);
+        return this;
     }
 }
