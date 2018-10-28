@@ -1,5 +1,6 @@
 package com.toolsqa.page.table;
 
+import com.toolsqa.annotation.WaitUntilVisible;
 import com.toolsqa.model.table.TableRow;
 import com.toolsqa.page.AbstractPage;
 import com.toolsqa.page.menu.MenuPage;
@@ -19,9 +20,11 @@ public class AutomationPracticeTablePage extends AbstractPage {
 
     private MenuPage menu;
 
+    @WaitUntilVisible
     @FindBy(css = "div#content table")
     private WebElement table;
 
+    @WaitUntilVisible
     @FindBy(css = "div#content table thead tr")
     private WebElement tableHeaderRow;
 
@@ -32,14 +35,15 @@ public class AutomationPracticeTablePage extends AbstractPage {
         super(driver, wait, actions);
         this.menu = menu;
         PageFactory.initElements(driver, this);
+        waitUntilPageLoads();
     }
 
     public String getTableHeaderText() {
-        return waitUntilVisible(tableHeaderRow).getText();
+        return tableHeaderRow.getText();
     }
 
     public String findRowWithHeightClosestToValue(int value) {
-        return waitUntilVisible(tableRows).stream()
+        return tableRows.stream()
                 .min(Comparator.comparingInt(row -> {
                     String heightText = row.findElement(By.cssSelector("td:nth-child(4)")).getText().replaceAll("m", "");
                     return Math.abs(Integer.valueOf(heightText) - value);
@@ -49,7 +53,7 @@ public class AutomationPracticeTablePage extends AbstractPage {
     }
 
     public List<TableRow> mapTableContentToList() {
-        return waitUntilVisible(tableRows).stream()
+        return tableRows.stream()
                 .map(row ->
                         new TableRow(
                                 row.findElement(By.cssSelector("th")).getText(),
