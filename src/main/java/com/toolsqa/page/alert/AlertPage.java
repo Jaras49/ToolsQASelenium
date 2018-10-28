@@ -1,5 +1,6 @@
 package com.toolsqa.page.alert;
 
+import com.toolsqa.annotation.WaitUntilVisible;
 import com.toolsqa.page.AbstractPage;
 import com.toolsqa.page.menu.MenuPage;
 import org.openqa.selenium.JavascriptExecutor;
@@ -14,12 +15,15 @@ public class AlertPage extends AbstractPage {
 
     private MenuPage menuPage;
 
+    @WaitUntilVisible
     @FindBy(css = "button[onClick='pushAlert()']")
     private WebElement simpleAlertButton;
 
+    @WaitUntilVisible
     @FindBy(css = "button[onClick='pushConfirm()']")
     private WebElement confirmAlertButton;
 
+    @WaitUntilVisible
     @FindBy(css = "button[onClick='promptConfirm()']")
     private WebElement promtAlerButton;
 
@@ -30,23 +34,24 @@ public class AlertPage extends AbstractPage {
         super(driver, wait, actions);
         this.menuPage = menuPage;
         PageFactory.initElements(driver, this);
+        waitUntilPageLoads();
     }
 
     public AlertPage clickSimpleAlertButton() {
         scrollPage();
-        waitUntilClickable(simpleAlertButton).click();
+        simpleAlertButton.click();
         return this;
     }
 
     public AlertPage clickConfirmAlertButton() {
         scrollPage();
-        waitUntilClickable(confirmAlertButton).click();
+        confirmAlertButton.click();
         return this;
     }
 
     public AlertPage clickPromptAlertButton() {
         scrollPage();
-        waitUntilClickable(promtAlerButton).click();
+        promtAlerButton.click();
         return this;
     }
 
