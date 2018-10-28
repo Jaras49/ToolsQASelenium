@@ -1,5 +1,6 @@
 package com.toolsqa.page.form;
 
+import com.toolsqa.annotation.WaitUntilVisible;
 import com.toolsqa.page.AbstractPage;
 import com.toolsqa.page.menu.MenuPage;
 import org.openqa.selenium.WebDriver;
@@ -19,48 +20,63 @@ public class AutomationFormPage extends AbstractPage {
 
     private MenuPage menu;
 
+    @WaitUntilVisible
     @FindBy(name = "firstname")
     private WebElement firstNameInput;
 
+    @WaitUntilVisible
     @FindBy(name = "lastname")
     private WebElement lastNameInput;
 
+    @WaitUntilVisible
     @FindBy(id = "sex-0")
     private WebElement maleSexRadioButton;
 
+    @WaitUntilVisible
     @FindBy(id = "sex-1")
     private WebElement femaleSexRadioButton;
 
+    @WaitUntilVisible
     @FindBy(css = ".control-group [name='exp']")
     private List<WebElement> experienceRadioButtons;
 
+    @WaitUntilVisible
     @FindBy(css = "#datepicker")
     private WebElement dateInput;
 
+    @WaitUntilVisible
     @FindBy(css = "[value='Manual Tester']")
     private WebElement manualTesterProffesionCheckBox;
 
+    @WaitUntilVisible
     @FindBy(css = "[value='Automation Tester']")
     private WebElement automationTesterProffesionCheckBox;
 
+    @WaitUntilVisible
     @FindBy(css = "#photo")
     private WebElement photoInput;
 
+    @WaitUntilVisible
     @FindBy(css = "#tool-0")
     private WebElement qtpAutomationToolCheckBox;
 
+    @WaitUntilVisible
     @FindBy(css = "#tool-1")
     private WebElement seleniumIdeAutomationToolCheckBox;
 
+    @WaitUntilVisible
     @FindBy(css = "#tool-2")
     private WebElement seleniumWebDriverAutomationToolCheckBox;
 
+    @WaitUntilVisible
     @FindBy(css = "#continents")
     private WebElement continentsSelect;
 
+    @WaitUntilVisible
     @FindBy(css = "#selenium_commands")
     private WebElement seleniumCommandsSelect;
 
+    @WaitUntilVisible
     @FindBy(css = "#submit")
     private WebElement submitButton;
 
@@ -68,10 +84,11 @@ public class AutomationFormPage extends AbstractPage {
         super(driver, wait, actions);
         this.menu = menu;
         PageFactory.initElements(driver, this);
+        waitUntilPageLoads();
     }
 
     public AutomationFormPage setFirstNameInput(String firstname) {
-        waitUntilClickable(firstNameInput).sendKeys(firstname);
+        firstNameInput.sendKeys(firstname);
         return this;
     }
 
@@ -80,7 +97,7 @@ public class AutomationFormPage extends AbstractPage {
     }
 
     public AutomationFormPage setLastNameInput(String lastname) {
-        waitUntilClickable(lastNameInput).sendKeys(lastname);
+        lastNameInput.sendKeys(lastname);
         return this;
     }
 
@@ -89,7 +106,7 @@ public class AutomationFormPage extends AbstractPage {
     }
 
     public AutomationFormPage clickMaleSexRadioButton() {
-        waitUntilClickable(maleSexRadioButton).click();
+        maleSexRadioButton.click();
         return this;
     }
 
@@ -98,7 +115,7 @@ public class AutomationFormPage extends AbstractPage {
     }
 
     public AutomationFormPage clickFemaleSexRadioButton() {
-        waitUntilClickable(femaleSexRadioButton).click();
+        femaleSexRadioButton.click();
         return this;
     }
 
@@ -107,7 +124,7 @@ public class AutomationFormPage extends AbstractPage {
     }
 
     public AutomationFormPage clickExperienceRadioButton(int value) {
-        waitUntilVisible(experienceRadioButtons).stream()
+        experienceRadioButtons.stream()
                 .filter(button -> button.getAttribute(VALUE_ATTR).equals(String.valueOf(value)))
                 .findAny()
                 .ifPresent(WebElement::click);
@@ -123,7 +140,7 @@ public class AutomationFormPage extends AbstractPage {
     }
 
     public AutomationFormPage setDateInput(String date) {
-        waitUntilClickable(dateInput).sendKeys(date);
+        dateInput.sendKeys(date);
         return this;
     }
 
@@ -132,7 +149,7 @@ public class AutomationFormPage extends AbstractPage {
     }
 
     public AutomationFormPage clickManualTesterProffesionCheckBox() {
-        waitUntilClickable(manualTesterProffesionCheckBox).click();
+        manualTesterProffesionCheckBox.click();
         return this;
     }
 
@@ -141,7 +158,7 @@ public class AutomationFormPage extends AbstractPage {
     }
 
     public AutomationFormPage clickAutomationTesterProffesionCheckBox() {
-        waitUntilClickable(automationTesterProffesionCheckBox).click();
+        automationTesterProffesionCheckBox.click();
         return this;
 
     }
@@ -151,7 +168,7 @@ public class AutomationFormPage extends AbstractPage {
     }
 
     public AutomationFormPage setPhotoInput(String photoPath) {
-        waitUntilClickable(photoInput).sendKeys(photoPath);
+        photoInput.sendKeys(photoPath);
         return this;
     }
 
@@ -160,7 +177,7 @@ public class AutomationFormPage extends AbstractPage {
     }
 
     public AutomationFormPage clickQtpAutomationToolCheckBox() {
-        waitUntilClickable(qtpAutomationToolCheckBox).click();
+        qtpAutomationToolCheckBox.click();
         return this;
     }
 
@@ -169,7 +186,7 @@ public class AutomationFormPage extends AbstractPage {
     }
 
     public AutomationFormPage clickSeleniumIdeAutomationToolCheckBox() {
-        waitUntilClickable(seleniumIdeAutomationToolCheckBox).click();
+        seleniumIdeAutomationToolCheckBox.click();
         return this;
     }
 
@@ -178,7 +195,7 @@ public class AutomationFormPage extends AbstractPage {
     }
 
     public AutomationFormPage clickSeleniumWebDriverAutomationToolCheckBox() {
-        waitUntilClickable(seleniumWebDriverAutomationToolCheckBox).click();
+        seleniumWebDriverAutomationToolCheckBox.click();
         return this;
     }
 
@@ -187,7 +204,6 @@ public class AutomationFormPage extends AbstractPage {
     }
 
     public AutomationFormPage selectContinentByIndex(int index) {
-        waitUntilClickable(continentsSelect);
         new Select(continentsSelect).selectByIndex(index);
         return this;
     }
@@ -197,7 +213,6 @@ public class AutomationFormPage extends AbstractPage {
     }
 
     public AutomationFormPage selectSeleniumCommandsByIndex(int... index) {
-        waitUntilClickable(seleniumCommandsSelect);
         Select select = new Select(seleniumCommandsSelect);
         for (int i : index) {
             select.selectByIndex(i);
@@ -206,15 +221,13 @@ public class AutomationFormPage extends AbstractPage {
     }
 
     public List<String> getSelectedSeleniumCommands() {
-        Select select = new Select(seleniumCommandsSelect);
-
-        return select.getAllSelectedOptions().stream()
+        return new Select(seleniumCommandsSelect).getAllSelectedOptions().stream()
                 .map(WebElement::getText)
                 .collect(Collectors.toList());
     }
 
     public AutomationFormPage clickSubmitButton() {
-        waitUntilClickable(submitButton).click();
+        submitButton.click();
         return this;
     }
 

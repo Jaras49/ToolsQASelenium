@@ -52,6 +52,16 @@ public abstract class AbstractPage {
         return pageObject;
     }
 
+    public <T> T assertTrue(boolean actual, T pageObject) {
+        Assert.assertTrue(actual);
+        return pageObject;
+    }
+
+    public <T> T assertFalse(boolean actual, T pageObject) {
+        Assert.assertFalse(actual);
+        return pageObject;
+    }
+
     protected void waitUntilPageLoads() {
         wait.until(ExpectedConditions.visibilityOfAllElements(getFieldsAnnotatedWithWaitForElement()));
     }

@@ -1,5 +1,6 @@
 package com.toolsqa.page.menu;
 
+import com.toolsqa.annotation.WaitUntilVisible;
 import com.toolsqa.factory.PageObjectFactory;
 import com.toolsqa.page.AbstractPage;
 import com.toolsqa.page.alert.AlertPage;
@@ -16,9 +17,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class MenuPage extends AbstractPage {
 
+    @WaitUntilVisible
     @FindBy(css = "#primary-menu")
     private WebElement primaryMenu;
 
+    @WaitUntilVisible
     @FindBy(xpath = "//*[@id='primary-menu']//*[contains(text(), 'DEMO SITES')]")
     private WebElement demoSites;
 
@@ -40,15 +43,16 @@ public class MenuPage extends AbstractPage {
     public MenuPage(WebDriver driver, WebDriverWait wait, Actions actions) {
         super(driver, wait, actions);
         PageFactory.initElements(driver, this);
+        waitUntilPageLoads();
     }
 
     public MenuPage hoverOverDemoSites() {
-        actions.moveToElement(waitUntilClickable(demoSites)).perform();
+        actions.moveToElement(demoSites).perform();
         return this;
     }
 
     public AutomationFormPage goToAutomationFormPage() {
-        waitUntilClickable(automationPracticeForm).click();
+        automationPracticeForm.click();
         return PageObjectFactory.createAutomationFormPage(driver);
     }
 
