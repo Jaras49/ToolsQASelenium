@@ -1,5 +1,6 @@
 package com.toolsqa.page.iframe;
 
+import com.toolsqa.annotation.WaitUntilVisible;
 import com.toolsqa.page.AbstractPage;
 import com.toolsqa.page.menu.MenuPage;
 import org.openqa.selenium.WebDriver;
@@ -7,13 +8,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class IframePracticePage extends AbstractPage {
 
     private MenuPage menu;
 
+    @WaitUntilVisible
     @FindBy(css = "#IF1")
     private WebElement formFrame;
 
@@ -23,6 +24,7 @@ public class IframePracticePage extends AbstractPage {
     @FindBy(css = "#submit")
     private WebElement formFrameSubmitButton;
 
+    @WaitUntilVisible
     @FindBy(css = "#IF2")
     private WebElement blogFrame;
 
@@ -36,6 +38,7 @@ public class IframePracticePage extends AbstractPage {
         super(driver, wait, actions);
         this.menu = menu;
         PageFactory.initElements(driver, this);
+        waitUntilPageLoads();
     }
 
     public MenuPage getMenu() {
@@ -43,41 +46,37 @@ public class IframePracticePage extends AbstractPage {
     }
 
     public IframePracticePage switchToFormFrame() {
-        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(formFrame));
+        driver.switchTo().frame(formFrame);
         return this;
     }
 
     public IframePracticePage setFormFrameInput(String input) {
-        waitUntilVisible(formFrameInputFirld).sendKeys(input);
+        formFrameInputFirld.sendKeys(input);
         return this;
     }
 
     public String getFormFrameInputText() {
-        return waitUntilVisible(formFrameInputFirld).getAttribute("value");
+        return formFrameInputFirld.getAttribute("value");
     }
 
     public IframePracticePage clickFormFrameSubmitButton() {
-        waitUntilClickable(formFrameSubmitButton).click();
+        formFrameSubmitButton.click();
         return this;
     }
 
     public IframePracticePage switchToBlogFrame() {
-        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(blogFrame));
+        driver.switchTo().frame(blogFrame);
         return this;
     }
 
     public IframePracticePage clickBlogFrameSubmitButton() {
-        waitUntilClickable(blogFrameSubmitButton).click();
+        blogFrameSubmitButton.click();
+        waitUntilVisible(blogFrameHiddenCommentsDiv);
         return this;
     }
 
     public IframePracticePage switchToParentFrame() {
         driver.switchTo().parentFrame();
-        return this;
-    }
-
-    public IframePracticePage isCommentsDivVisible() {
-        waitUntilVisible(blogFrameHiddenCommentsDiv);
         return this;
     }
 }

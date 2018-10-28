@@ -5,8 +5,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import com.toolsqa.AbstractTest;
 
-import static org.testng.Assert.assertEquals;
-
 public class IFrameTest extends AbstractTest {
 
     private IframePracticePage iframePracticePage;
@@ -19,18 +17,15 @@ public class IFrameTest extends AbstractTest {
     }
 
     @Test
-    public void test() {
+    public void iFrameTest() {
         iframePracticePage.switchToFormFrame()
-                .setFormFrameInput("test");
-        assertEquals(iframePracticePage.getFormFrameInputText(), "test");
-
-        iframePracticePage.clickFormFrameSubmitButton();
-        assertEquals(iframePracticePage.getFormFrameInputText(), "");
-
-        iframePracticePage.switchToParentFrame()
+                .setFormFrameInput("test")
+                .assertEquals(iframePracticePage.getFormFrameInputText(),"test", iframePracticePage )
+                .clickFormFrameSubmitButton()
+                .assertEquals(iframePracticePage.getFormFrameInputText(),"" , iframePracticePage )
+                .switchToParentFrame()
                 .switchToBlogFrame()
-                .clickBlogFrameSubmitButton()
-                .isCommentsDivVisible();
+                .clickBlogFrameSubmitButton();
     }
 
     private IframePracticePage openIFramePracticePage() {
