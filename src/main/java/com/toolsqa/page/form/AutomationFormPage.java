@@ -14,7 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class AutomationFormPage extends AbstractPage {
+public class AutomationFormPage extends AbstractPage<AutomationFormPage> {
 
     private static final String VALUE_ATTR = "value";
 

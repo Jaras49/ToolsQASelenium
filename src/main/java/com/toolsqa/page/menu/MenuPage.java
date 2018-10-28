@@ -1,6 +1,5 @@
 package com.toolsqa.page.menu;
 
-import com.toolsqa.annotation.WaitUntilVisible;
 import com.toolsqa.factory.PageObjectFactory;
 import com.toolsqa.page.AbstractPage;
 import com.toolsqa.page.alert.AlertPage;
@@ -15,13 +14,11 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class MenuPage extends AbstractPage {
+public class MenuPage extends AbstractPage<MenuPage> {
 
-    @WaitUntilVisible
     @FindBy(css = "#primary-menu")
     private WebElement primaryMenu;
 
-    @WaitUntilVisible
     @FindBy(xpath = "//*[@id='primary-menu']//*[contains(text(), 'DEMO SITES')]")
     private WebElement demoSites;
 
@@ -43,7 +40,6 @@ public class MenuPage extends AbstractPage {
     public MenuPage(WebDriver driver, WebDriverWait wait, Actions actions) {
         super(driver, wait, actions);
         PageFactory.initElements(driver, this);
-        waitUntilPageLoads();
     }
 
     public MenuPage hoverOverDemoSites() {
@@ -52,7 +48,7 @@ public class MenuPage extends AbstractPage {
     }
 
     public AutomationFormPage goToAutomationFormPage() {
-        automationPracticeForm.click();
+        waitUntilClickable(automationPracticeForm).click();
         return PageObjectFactory.createAutomationFormPage(driver);
     }
 
@@ -63,7 +59,7 @@ public class MenuPage extends AbstractPage {
 
     public AutomationPracticeTablePage goToAutomationPracticeTablePage() {
         waitUntilClickable(automationPracticeTable).click();
-        return PageObjectFactory.createAutomationPracticeTable(driver);
+        return PageObjectFactory.createAutomationPracticeTablePage(driver);
     }
 
     public AutomationPracticeSwitchWindowsPage goToAutomationPracticeSwitchWindows() {

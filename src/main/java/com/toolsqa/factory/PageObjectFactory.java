@@ -27,7 +27,7 @@ public class PageObjectFactory {
                 (driver, new WebDriverWait(driver, WAIT_SECONDS), new Actions(driver), createMenuPage(driver));
     }
 
-    public static AutomationPracticeTablePage createAutomationPracticeTable(WebDriver driver) {
+    public static AutomationPracticeTablePage createAutomationPracticeTablePage(WebDriver driver) {
         return new AutomationPracticeTablePage
                 (driver, new WebDriverWait(driver, WAIT_SECONDS), new Actions(driver), createMenuPage(driver));
     }

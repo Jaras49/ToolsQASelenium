@@ -11,7 +11,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class AlertPage extends AbstractPage {
+public class AlertPage extends AbstractPage<AlertPage> {
 
     private MenuPage menuPage;
 

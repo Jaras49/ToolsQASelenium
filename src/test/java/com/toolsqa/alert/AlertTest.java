@@ -5,6 +5,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import com.toolsqa.AbstractTest;
 
+
 public class AlertTest extends AbstractTest {
 
     private AlertPage alertPage;
@@ -22,12 +23,12 @@ public class AlertTest extends AbstractTest {
                 .confirmAlert()
                 .clickConfirmAlertButton()
                 .confirmAlert()
-                .assertEquals(alertPage.getConfirmAlertText(), "You have clicked on OK", alertPage)
+                .assertEquals(alertPage.getConfirmAlertText(), "You have clicked on OK")
                 .clickConfirmAlertButton()
                 .dismissAlert()
-                .assertEquals(alertPage.getConfirmAlertText(), "You have clicked on Cancel", alertPage)
+                .assertEquals(alertPage.getConfirmAlertText(), "You have clicked on Cancel")
                 .clickPromptAlertButton()
-                .assertEquals(alertPage.getAlertText(), "Do you like toolsqa?", alertPage)
+                .assertEquals(alertPage.getAlertText(), "Do you like toolsqa?")
                 .setAlertInput("No")
                 .confirmAlert();
     }

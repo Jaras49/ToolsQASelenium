@@ -51,19 +51,19 @@ public class FormTest extends AbstractTest {
 
     private void assertFormData() {
         automationFormPage
-                .assertEquals(automationFormPage.getFirstNameInput(), "Jarosław", automationFormPage)
-                .assertEquals(automationFormPage.getLastNameInput(), "Nowak", automationFormPage)
-                .assertTrue(automationFormPage.isFemaleSexRadioButtonSelected(), automationFormPage)
-                .assertFalse(automationFormPage.isMaleSexRadioButtonSelected(), automationFormPage)
-                .assertEquals(automationFormPage.getSelectedExperienceRadioButtonValue(), 1, automationFormPage)
-                .assertEquals(automationFormPage.getDateInput(), "1.08.1889", automationFormPage)
-                .assertTrue(automationFormPage.isAutomationTesterProffesionCheckBoxSelected(), automationFormPage)
-                .assertFalse(automationFormPage.isManualTesterProffesionCheckBoxSelected(), automationFormPage)
-                .assertEquals(automationFormPage.getPhotoName(), "dummyPhoto.jpg", automationFormPage)
-                .assertTrue(automationFormPage.isSeleniumWebDriverAutomationToolCheckBoxSelected(), automationFormPage)
-                .assertFalse(automationFormPage.isQptAutomationToolCheckBoxSelected(), automationFormPage)
-                .assertFalse(automationFormPage.isSeleniumIdeAutomationToolCheckBoxSelected(),automationFormPage )
-                .assertEquals(automationFormPage.getSelectedContinentName(), "Europe", automationFormPage)
-                .assertEquals(automationFormPage.getSelectedSeleniumCommands(), Arrays.asList("Browser Commands", "Wait Commands"), automationFormPage);
+                .assertEquals(automationFormPage.getFirstNameInput(), "Jarosław")
+                .assertEquals(automationFormPage.getLastNameInput(), "Nowak")
+                .assertTrue(automationFormPage.isFemaleSexRadioButtonSelected())
+                .assertFalse(automationFormPage.isMaleSexRadioButtonSelected())
+                .assertEquals(automationFormPage.getSelectedExperienceRadioButtonValue(), 1)
+                .assertEquals(automationFormPage.getDateInput(), "1.08.1889")
+                .assertTrue(automationFormPage.isAutomationTesterProffesionCheckBoxSelected())
+                .assertFalse(automationFormPage.isManualTesterProffesionCheckBoxSelected())
+                .assertEquals(automationFormPage.getPhotoName(), "dummyPhoto.jpg")
+                .assertTrue(automationFormPage.isSeleniumWebDriverAutomationToolCheckBoxSelected())
+                .assertFalse(automationFormPage.isQptAutomationToolCheckBoxSelected())
+                .assertFalse(automationFormPage.isSeleniumIdeAutomationToolCheckBoxSelected())
+                .assertEquals(automationFormPage.getSelectedContinentName(), "Europe")
+                .assertEquals(automationFormPage.getSelectedSeleniumCommands(), Arrays.asList("Browser Commands", "Wait Commands"));
     }
 }

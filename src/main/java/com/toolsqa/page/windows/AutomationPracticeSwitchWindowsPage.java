@@ -9,7 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class AutomationPracticeSwitchWindowsPage extends AbstractPage {
+public class AutomationPracticeSwitchWindowsPage extends AbstractPage<AutomationPracticeSwitchWindowsPage> {
 
     private MenuPage menu;
 

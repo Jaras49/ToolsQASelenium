@@ -2,13 +2,9 @@ package com.toolsqa.windows;
 
 import com.toolsqa.page.windows.AutomationPracticeSwitchWindowsPage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import com.toolsqa.AbstractTest;
-
-import static org.testng.Assert.assertEquals;
 
 public class TabTest extends AbstractTest {
 
@@ -36,27 +32,21 @@ public class TabTest extends AbstractTest {
     @Test
     public void switchMessageWindowTest() {
         automationPracticeSwitchWindowsPage.clickNewMessageWindowButton()
-                .switchToNewWindow(1);
-
-        String text = new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.tagName("body"))).getText();
-        assertEquals(text, "Knowledge increases by sharing but not by saving. Please share this website with your friends and in your organization.");
-
+                .switchToNewWindow(1)
+                .assertEquals(driver.findElement(By.tagName("body")).getText(),
+                        "Knowledge increases by sharing but not by saving. Please share this website with your friends and in your organization.");
         driver.close();
     }
 
     private void switchAndAssert() {
-        automationPracticeSwitchWindowsPage.switchToNewWindow(1);
-
-        String url = driver.getCurrentUrl();
-        automationPracticeSwitchWindowsPage.getMenu()
+        automationPracticeSwitchWindowsPage.switchToNewWindow(1)
+                .getMenu()
                 .hoverOverDemoSites()
-                .goToAutomationPracticeTablePage();
-        new WebDriverWait(driver, 15).until(ExpectedConditions.not(ExpectedConditions.urlToBe(url)));
-        assertEquals(driver.getCurrentUrl(), "http://toolsqa.com/automation-practice-table/");
-
+                .goToAutomationPracticeTablePage()
+                .assertEquals(driver.getCurrentUrl(), "http://toolsqa.com/automation-practice-table/");
         driver.close();
-        automationPracticeSwitchWindowsPage.switchToNewWindow(0);
-        assertEquals(driver.getCurrentUrl(), "http://toolsqa.com/automation-practice-switch-windows/");
+        automationPracticeSwitchWindowsPage.switchToNewWindow(0)
+                .assertEquals(driver.getCurrentUrl(), "http://toolsqa.com/automation-practice-switch-windows/");
     }
 
     private AutomationPracticeSwitchWindowsPage openAutomationPracticeSwitchWindowsPage() {

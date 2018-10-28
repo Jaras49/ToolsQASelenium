@@ -20,9 +20,9 @@ public class IFrameTest extends AbstractTest {
     public void iFrameTest() {
         iframePracticePage.switchToFormFrame()
                 .setFormFrameInput("test")
-                .assertEquals(iframePracticePage.getFormFrameInputText(),"test", iframePracticePage )
+                .assertEquals(iframePracticePage.getFormFrameInputText(), "test")
                 .clickFormFrameSubmitButton()
-                .assertEquals(iframePracticePage.getFormFrameInputText(),"" , iframePracticePage )
+                .assertEquals(iframePracticePage.getFormFrameInputText(), "")
                 .switchToParentFrame()
                 .switchToBlogFrame()
                 .clickBlogFrameSubmitButton();

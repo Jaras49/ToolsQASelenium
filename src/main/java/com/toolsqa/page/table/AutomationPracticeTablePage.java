@@ -16,7 +16,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class AutomationPracticeTablePage extends AbstractPage {
+public class AutomationPracticeTablePage extends AbstractPage<AutomationPracticeTablePage> {
 
     private MenuPage menu;
 

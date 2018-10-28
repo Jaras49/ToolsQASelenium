@@ -13,7 +13,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AbstractPage {
+public abstract class AbstractPage<T extends AbstractPage> {
 
     protected WebDriver driver;
     protected WebDriverWait wait;
@@ -29,10 +29,6 @@ public abstract class AbstractPage {
         return wait.until(ExpectedConditions.elementToBeClickable(webElement));
     }
 
-    protected List<WebElement> waitUntilVisible(List<WebElement> webElements) {
-        return wait.until(ExpectedConditions.visibilityOfAllElements(webElements));
-    }
-
     protected WebElement waitUntilVisible(WebElement webElement) {
         return wait.until(ExpectedConditions.visibilityOf(webElement));
     }
@@ -41,25 +37,26 @@ public abstract class AbstractPage {
         return wait.until(ExpectedConditions.alertIsPresent());
     }
 
-    public void switchToNewWindow(int index) {
+    public T switchToNewWindow(int index) {
         ArrayList<String> windowHandles = new ArrayList<>(driver.getWindowHandles());
         driver.switchTo().window(windowHandles.get(index));
         driver.manage().window().maximize();
+        return (T) this;
     }
 
-    public <T, M> T assertEquals(M actual, M expected, T pageObject) {
+    public <V> T assertEquals(V actual, V expected) {
         Assert.assertEquals(actual, expected);
-        return pageObject;
+        return (T) this;
     }
 
-    public <T> T assertTrue(boolean actual, T pageObject) {
+    public T assertTrue(boolean actual) {
         Assert.assertTrue(actual);
-        return pageObject;
+        return (T) this;
     }
 
-    public <T> T assertFalse(boolean actual, T pageObject) {
+    public T assertFalse(boolean actual) {
         Assert.assertFalse(actual);
-        return pageObject;
+        return (T) this;
     }
 
     protected void waitUntilPageLoads() {
@@ -76,7 +73,6 @@ public abstract class AbstractPage {
                 }
                 declaredField.setAccessible(false);
             }
-
         } catch (IllegalAccessException ex) {
             System.err.println(ex);
         }
