@@ -1,4 +1,4 @@
-package table;
+package com.toolsqa.model.table;
 
 public final class TableRow {
 
